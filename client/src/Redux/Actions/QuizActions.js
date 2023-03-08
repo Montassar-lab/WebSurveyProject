@@ -1,5 +1,5 @@
 import axios from "axios"
-import { FAIL, GETONEQUIZ, GETQUIZS } from "../Actiontypes/Quiztypes"
+import { FAIL, GETMYQUIZS, GETONEQUIZ, GETQUIZS } from "../Actiontypes/Quiztypes"
 
 
 
@@ -21,12 +21,35 @@ export const getQuizs=()=>async(dispatch)=>{
     }
 }
 
+export const getMyQuizs=(id)=>async(dispatch)=>{
+    try {
+        const res = await axios.get(`/api/Quiz/readOwnerQuizs/${id}`)
+        dispatch({
+            type : GETMYQUIZS,
+            payload : res.data.Quizs
+
+        })
+    } catch (error) {
+        console.log(error)
+        dispatch(
+            {
+                type : FAIL,
+                payload : error.response.data.errors
+            })
+    }
+}
+
 
 export const addQuiz=(newQuiz,navigate)=>async(dispatch)=>{
+    const config = {
+        headers : {
+            Authorized : localStorage.getItem("token")
+        }
+    }
     try {
-        await axios.post('api/Quiz/addQuiz',newQuiz)
+        await axios.post('api/Quiz/addQuiz',newQuiz,config)
         dispatch(getQuizs())
-        navigate('/QuestionInterface')
+        navigate('/QuizList')
     } catch (error) {
         console.log(error)
     }

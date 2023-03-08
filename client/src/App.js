@@ -13,6 +13,11 @@ import Errorhandling from './Components/Errorhandling';
 import QuestionInterface from './Components/QuestionInterface';
 import Quizlist from './Components/Quizlist';
 import QuizEdit from './Components/QuizEdit';
+import Survey from './Components/Survey';
+import SurveyAnswer from './Components/SurveyAnswer';
+import SurveyResult from './Components/SurveyResult';
+import QuizOwnerList from './Components/QuizOwnerList';
+
 
 
 function App() {
@@ -32,7 +37,12 @@ function App() {
         <Route path='/editProfil/:id' element={<ProfilEdit/>}/>
         <Route path='/QuestionInterface' element={<QuestionInterface/>}/>
         <Route path='/QuizList' element={<Quizlist/>}/>
+        <Route path='/QuizOwnerList/:id' element={<QuizOwnerList/>}/>
         <Route path='/editQuiz/:id' element={<QuizEdit/>}/>
+        <Route path='/Survey' element={<Survey/>}/>
+        <Route path='/SurveyAnswer/:id' element={<SurveyAnswer/>}/>
+        <Route path='/SurveyResult/:id' element={<SurveyResult/>}/>
+
       </Routes>
       
     </div>

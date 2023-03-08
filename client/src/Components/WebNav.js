@@ -24,6 +24,7 @@ const Webnav=()=>{
                                 <>
                                     <Nav.Link as={Link} to='/profile'>Profile</Nav.Link> 
                                     <Nav.Link onClick={()=>{dispatch(logout());navigate('/')}}>Logout</Nav.Link>
+                                    
                                 </>:
 
                                 <>
@@ -36,6 +37,9 @@ const Webnav=()=>{
                             <Nav.Link as={Link} to='/users'>Users</Nav.Link>
                             <Nav.Link as={Link} to='/QuestionInterface'>QuizInterface</Nav.Link>
                             <Nav.Link as={Link} to='/QuizList'>QuizList</Nav.Link>
+                            <Nav.Link as={Link} to={`/QuizOwnerList/${user._id}`}>Your Quizs</Nav.Link>
+                            <Nav.Link as={Link} to='/Survey'>Survey</Nav.Link>
+                            
 
                             
                             

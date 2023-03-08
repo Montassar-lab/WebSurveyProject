@@ -10,7 +10,7 @@ const QuizCard=({el})=>{
         <div>
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-
+                    <h2>{el.owner.name}</h2>
                     <Card.Title>{el.title}</Card.Title>
                     
                     {el.quiz && el.quiz.map((el, id) => (

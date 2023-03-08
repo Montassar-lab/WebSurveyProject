@@ -1,12 +1,18 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { current } from "../Redux/Actions/AuthActions"
 import { addQuiz } from "../Redux/Actions/QuizActions"
 
 
 
 const QuestionInterface=()=>{
+    
 
+    // useEffect(()=>{
+    //     dispatch(current())
+    // },[])
+    // const user = useSelector(state=>state.AuthReducer.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 

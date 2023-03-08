@@ -18,20 +18,12 @@ const QuizEdit=()=>{
     const [quiz,setQuiz] = useState(oneQuiz.quiz)
     const [title,setTitle] = useState(oneQuiz.title)
  
-    // const [question,setQuestion] = useState(oneQuiz.question)
-    // const [reponse1,setReponse1] = useState(oneQuiz.reponse1)
-    // const [reponse2,setReponse2] = useState(oneQuiz.reponse2)
-    // const [reponse3,setReponse3] = useState(oneQuiz.reponse3)
-    // const [reponse4,setReponse4] = useState(oneQuiz.reponse4)
+    
 
         useEffect(()=>{
         setQuiz(oneQuiz.quiz)
         setTitle(oneQuiz.title)
-        // setQuestion(oneQuiz.question)
-        // setReponse1(oneQuiz.reponse1)
-        // setReponse2(oneQuiz.reponse2)
-        // setReponse3(oneQuiz.reponse3)
-        // setReponse4(oneQuiz.reponse4)
+        
     },[oneQuiz])
     
     const navigate = useNavigate()
@@ -56,11 +48,7 @@ const QuizEdit=()=>{
                     <Form.Control value={title} onChange={(e)=> setTitle(e.target.value)} type="text" placeholder="Enter Title" />       
                 </Form.Group>
 
-                
-                
-               
-               
-               
+
                
                {    oneQuiz.quiz &&
                     oneQuiz.quiz.map((el,i)=>

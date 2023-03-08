@@ -1,9 +1,10 @@
-import { FAIL, GETONEQUIZ, GETQUIZS } from "../Actiontypes/Quiztypes"
+import { FAIL, GETMYQUIZS, GETONEQUIZ, GETQUIZS } from "../Actiontypes/Quiztypes"
 
 const initialState={
     Quizs : [],
     errors : [],
-    oneQuiz : {}
+    oneQuiz : {},
+    myQuizs : []
 }
 
 const QuizReducer=(state = initialState,action)=>{
@@ -11,6 +12,7 @@ const QuizReducer=(state = initialState,action)=>{
 
         case FAIL : return {...state,errors : action.payload.errors, Quizs : null}
         case GETQUIZS : return {...state, Quizs : action.payload}
+        case GETMYQUIZS : return {...state, myQuizs : action.payload}
         case GETONEQUIZ : return {...state, oneQuiz : action.payload}
         
 
