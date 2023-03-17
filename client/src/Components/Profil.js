@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { current, deleteCurrentUser } from "../Redux/Actions/AuthActions"
-import { Button, Card } from "react-bootstrap"
 import { Link, useNavigate } from "react-router-dom"
 
 
@@ -16,31 +15,38 @@ const Profil=()=>{
     useEffect(()=>{
         dispatch(current())
     },[dispatch])
-
     return(
-        <div>
+        <section>
+        <div className="form-box">
+            <div className="form-value">
+  
+          <div >
+          <h2>Your Profil</h2>  
             {
                 user &&
                 <>
-                    <Card style={{ width: '18rem' }}>
-                        <Card.Body>
-                            <Card.Title>{user.name}</Card.Title>
-                            <Card.Text> {user.email}</Card.Text>
+                    
+                            <div className="inputbox">{user.name}</div>
+                            <div className="inputbox">{user.cin}</div>
+                            <div className="inputbox"> {user.email}</div>
+                            <div className="inputbox"> {user.role}</div>
+                          
+                            <div className="register">
+                               
+                          
+                            <button> <Link style={{color : "black",textDecoration:'none'}} to={`/editProfil/${user._id}`}>Edit</Link></button>
+                            <button onClick={()=>dispatch(deleteCurrentUser(user._id,navigate))}>Delete</button>
+                            
+                            </div>
+                  
 
-                            <Card.Text> {user.age}</Card.Text>
-                            <Card.Text> {user.cin}</Card.Text>
-                            <Card.Text> {user.matriculefiscale}</Card.Text>
-                            <Card.Text> {user.adress}</Card.Text>
-                            <Card.Text> {user.nationality}</Card.Text>
-                            <Card.Text> {user.highesteducationlevel}</Card.Text>
 
-                            <Button as={Link} to={`/editProfil/${user._id}`}>Edit</Button>
-                            <Button variant="danger" onClick={()=>dispatch(deleteCurrentUser(user._id,navigate))} >Delete</Button>
-                        </Card.Body>
-    </Card>
                 </>
             }
-        </div>
+         </div>
+       </div> 
+       </div>
+    </section>
     )
 }
 

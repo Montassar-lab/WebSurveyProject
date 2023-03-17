@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import {Form,Button} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 import { getOneUser, updateProfil } from "../Redux/Actions/AuthActions"
@@ -42,52 +42,38 @@ const ProfilEdit=()=>{
         dispatch(updateProfil({name,cin,matriculefiscale,age,adress,nationality,highesteducationlevel,email},id,navigate))
     }
     return(
-        <Form>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control value={name} onChange={(e)=> setName(e.target.value)} type="text" placeholder="Enter name" />       
-        </Form.Group>
+      <section>
+      <div className="form-box">
+          <div className="form-value">
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>cin</Form.Label>
-          <Form.Control value={cin} onChange={(e)=> setcin(e.target.value)} type="text" placeholder="Enter cin" />       
-        </Form.Group>
+        <form action="">
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>matriculefiscale</Form.Label>
-          <Form.Control value={matriculefiscale} onChange={(e)=> setmatriculefiscale(e.target.value)} type="text" placeholder="Enter matriculefiscale" />       
-        </Form.Group>
+        <h2>Profil Edit</h2> 
+         <div className="inputbox">
+                        <input defaultValue={name} onChange={(e)=> setName(e.target.value)} type="email" required/>
+                        <label for="">Name</label>
+                    </div>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Age</Form.Label>
-          <Form.Control value={age} onChange={(e)=> setAge(e.target.value)} type="number" placeholder="Enter age" />       
-        </Form.Group>
+                    <div className="inputbox">
+                        <input defaultValue={cin} onChange={(e)=> setcin(e.target.value)} type="cin" required/>
+                        <label for="">CIN</label>
+                    </div>
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>adress</Form.Label>
-          <Form.Control value={adress} onChange={(e)=> setadress(e.target.value)} type="text" placeholder="Enter adress" />       
-        </Form.Group>
+                    <div className="inputbox">
+                        <input defaultValue={email} onChange={(e)=> setEmail(e.target.value)} type="Email" required/>
+                        <label for="">Email</label>
+                    </div> 
 
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>nationality</Form.Label>
-          <Form.Control value={nationality} onChange={(e)=> setnationality(e.target.value)} type="text" placeholder="Enter nationality" />       
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>highesteducationlevel</Form.Label>
-          <Form.Control value={highesteducationlevel} onChange={(e)=> sethighesteducationlevel(e.target.value)} type="text" placeholder="Enter highesteducationlevel" />       
-        </Form.Group>
-
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control value={email} onChange={(e)=> setEmail(e.target.value)} type="email" placeholder="Enter email" />       
-        </Form.Group>
+                    <button onClick={(e)=>handleEdit(e)}>Submit</button>
   
        
-        <Button onClick={(e)=>handleEdit(e)} variant="primary" type="submit">
+        {/* <Button onClick={(e)=>handleEdit(e)} variant="primary" type="submit">
           Submit
-        </Button>
-      </Form>
+        </Button> */}
+        </form>
+       </div> 
+       </div>
+    </section>
     )
 }
 

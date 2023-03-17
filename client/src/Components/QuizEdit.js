@@ -41,8 +41,13 @@ const QuizEdit=()=>{
     }
     return(
 
-        <div>
-            
+        <section>
+      <div className="form-box">
+          <div className="form-value">
+
+        <form action="">
+
+                   
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Quiz Title</Form.Label>
                     <Form.Control value={title} onChange={(e)=> setTitle(e.target.value)} type="text" placeholder="Enter Title" />       
@@ -74,12 +79,14 @@ const QuizEdit=()=>{
                         </>)
                         
                     }
+                <button onClick={(e)=>handleEdit(e)}>Submit</button>
                 
 
-                
-                <Button onClick={(e)=>handleEdit(e)} variant="primary" type="submit"> Submit </Button>
             
-        </div>
+                </form>
+       </div> 
+       </div>
+    </section>
         
     )
     

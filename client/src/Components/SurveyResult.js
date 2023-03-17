@@ -39,6 +39,10 @@ const title = oneQuiz.title
   };
 
   return (
+
+    <section>
+      
+      <div className="form-value">
     <div className='barchart'>
 
       <h1>{title}</h1>
@@ -60,7 +64,9 @@ const title = oneQuiz.title
           />
         </div>
       ))}
-    </div>   
+    </div> 
+    </div>  
+    </section> 
   );
   
 }

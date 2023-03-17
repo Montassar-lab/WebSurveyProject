@@ -15,7 +15,8 @@ const Quizlist=()=>{
     return(
         <div>
             {quizs && quizs.map(el => <QuizCard key={el._id} el={el}/>  )}
-        </div>
+            </div>
+           
     )
 }
 

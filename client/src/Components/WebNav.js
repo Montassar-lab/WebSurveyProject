@@ -17,32 +17,45 @@ const Webnav=()=>{
                         <Nav className="me-auto">
 
                             <Nav.Link as={Link} to='/'>Home</Nav.Link>
+                            
 
                             {
-                                (token && user) ?
+                                (token && user.role == 'admin') ?
 
                                 <>
                                     <Nav.Link as={Link} to='/profile'>Profile</Nav.Link> 
+                                    <Nav.Link as={Link} to='/users'>Users</Nav.Link>
+                                    <Nav.Link as={Link} to='/QuestionInterface'>QuizInterface</Nav.Link>
+                                    <Nav.Link as={Link} to='/QuizList'>QuizList</Nav.Link>
+                                    <Nav.Link as={Link} to='/Survey'>Survey</Nav.Link>
+                                    <Nav.Link as={Link} to={`/QuizOwnerList/${user._id}`}>Your Quizs</Nav.Link>
                                     <Nav.Link onClick={()=>{dispatch(logout());navigate('/')}}>Logout</Nav.Link>
                                     
                                 </>:
+                                 (token && user.role == 'user') ?
+                                 <>
+                                 <Nav.Link as={Link} to='/profile'>Profile</Nav.Link>
+                                 <Nav.Link as={Link} to='/Survey'>Survey</Nav.Link>                                
+                                 <Nav.Link onClick={()=>{dispatch(logout());navigate('/')}}>Logout</Nav.Link>
+                                 </>
 
+                                 :
+                                 (token && user.role == 'professional') ?
+                                 <>
+                                 <Nav.Link as={Link} to='/profile'>Profile</Nav.Link> 
+                                 <Nav.Link as={Link} to='/QuestionInterface'>QuizInterface</Nav.Link>
+                                 <Nav.Link as={Link} to='/Survey'>Survey</Nav.Link>
+                                 <Nav.Link as={Link} to={`/QuizOwnerList/${user._id}`}>Your Quizs</Nav.Link>                                 
+                                 <Nav.Link onClick={()=>{dispatch(logout());navigate('/')}}>Logout</Nav.Link>
+                                 </>
+                                 :
                                 <>
                                     
                                     <Nav.Link as={Link} to='/register'>Register</Nav.Link>
                                     <Nav.Link as={Link} to='/login'>Login</Nav.Link>
                                 </>
                                 }
-
-                            <Nav.Link as={Link} to='/users'>Users</Nav.Link>
-                            <Nav.Link as={Link} to='/QuestionInterface'>QuizInterface</Nav.Link>
-                            <Nav.Link as={Link} to='/QuizList'>QuizList</Nav.Link>
-                            <Nav.Link as={Link} to={`/QuizOwnerList/${user._id}`}>Your Quizs</Nav.Link>
-                            <Nav.Link as={Link} to='/Survey'>Survey</Nav.Link>
-                            
-
-                            
-                            
+                                 
                         </Nav>
                 </Container>
             </Navbar>

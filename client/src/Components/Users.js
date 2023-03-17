@@ -16,9 +16,16 @@ const Users=()=>{
         dispatch(getUsers())
     },[users])
     return(
-        <div>
+        <section>
+     
+         
+
+       
             {users && users.map(el => <UserCard key={el._id} el={el}/>)}
-        </div>
+          
+     
+      
+    </section>
     )
 }
 

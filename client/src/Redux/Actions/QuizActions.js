@@ -89,13 +89,14 @@ export const getOneQuiz=(id)=>async(dispatch)=>{
 
 
 export const updateQuiz=(upQuiz,id,navigate)=>async(dispatch)=>{
+    console.log(upQuiz)
     try {
         await axios.put(`/api/Quiz/updateQuiz/${id}`,upQuiz)
         dispatch(getQuizs())
         navigate('/QuizList')
         
     } catch (error) {
-        console.log(error)
+
         dispatch(
             {
                 type : FAIL,

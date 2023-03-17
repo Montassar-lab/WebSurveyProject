@@ -20,10 +20,14 @@ import QuizOwnerList from './Components/QuizOwnerList';
 
 
 
+
 function App() {
   return (
     <div>
-      <Webnav/>
+
+      <div className='Navbar'>
+        <Webnav/>
+      </div>
 
       <Errorhandling/>
 
@@ -42,6 +46,7 @@ function App() {
         <Route path='/Survey' element={<Survey/>}/>
         <Route path='/SurveyAnswer/:id' element={<SurveyAnswer/>}/>
         <Route path='/SurveyResult/:id' element={<SurveyResult/>}/>
+   
 
       </Routes>
       

@@ -6,7 +6,8 @@ const QuizSchema = new mongoose.Schema({
     owner : {
         type : mongoose.Types.ObjectId,
         ref : 'Usermodel'
-    }
+    },
+    Answeredid : Array
     
 })
 

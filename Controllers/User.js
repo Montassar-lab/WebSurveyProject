@@ -1,9 +1,11 @@
 const bcrypt = require('bcrypt')
 var jwt = require('jsonwebtoken');
+const Quiz = require('../Models/Quiz');
 const User = require('../Models/User');
 
 exports.signUp=async(req,res)=>{
     try {
+        
         const {email,password} = req.body
 
         const found = await User.findOne({email})
@@ -18,21 +20,19 @@ exports.signUp=async(req,res)=>{
         const hashPassword = bcrypt.hashSync(password, salt);
 
         newUser.password = hashPassword
-
-        await newUser.save()
         
+        await newUser.save()
         const payload = {id : newUser._id}
         var token = jwt.sign(payload, process.env.privateKey,{ expiresIn: '1h' })
-
+        
         res.status(200).send({Msg:'User Added',newUser,token})
 
 
     } catch (error) {
+
         res.status(500).send({errors : [{msg :'Could not SignUp'}]})
     }
 }
-
-
 
 
 exports.signIn=async(req,res)=>{
@@ -82,7 +82,17 @@ exports.readUsers=async(req,res)=>{
 exports.deleteUser=async(req,res)=>{
     try {
         const {id} = req.params
+        const quizs = await Quiz.find()
+        for (let i = 0; i < quizs.length; i++) {
+            if(quizs[i].owner == id){
+                await Quiz.findByIdAndDelete(quizs[i]._id)
+            }         
+            
+        }
         await User.findByIdAndDelete(id)
+
+       
+       
         res.status(200).send({Msg : 'User deleted'})
     } catch (error) {
         res.status(500).send('Could not delete User')

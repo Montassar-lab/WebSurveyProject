@@ -47,25 +47,32 @@ const QuestionInterface=()=>{
         dispatch(addQuiz({title,quiz},navigate))
     }
     return(
-        <div>
-            
+        <section>
+      <div className="form-box">
+          <div className="form-value">
+                <div className="inputbox">
                 <label>Quiz title</label>
                 <input value={title} onChange={(e)=> setTitle(e.target.value)} type="text"/>
-                <br/><br/>
+                </div>
+ 
+
+                <div className="inputbox">
                 <label>Question</label>
                 <input value={question} onChange={(e)=> setQuestion(e.target.value)} type="text"/>
-                <br/><br/>
+                <br/>
+                </div>
                 <label>Reponse 1</label>
                 <input value={reponse1} onChange={(e)=> setReponse1(e.target.value)} type="text"/>
-                <br/><br/>
+                <br/>
                 <label>Reponse 2</label>
                 <input value={reponse2} onChange={(e)=> setReponse2(e.target.value)} type="text"/>
-                <br/><br/>
+                <br/>
                 <label>Reponse 3</label>
                 <input value={reponse3} onChange={(e)=> setReponse3(e.target.value)} type="text"/>
-                <br/><br/>
+                <br/>
                 <label>Reponse 4</label>
                 <input value={reponse4} onChange={(e)=> setReponse4(e.target.value)} type="text"/>
+               
                 <br/><br/>
                 <button onClick={handleAddQustion}>Add</button>
 
@@ -86,7 +93,9 @@ const QuestionInterface=()=>{
                         </div>)
                 }
                 <button onClick={(e)=>handleAdd(e)}>Send Quiz</button>
-        </div>
+                </div> 
+       </div>
+    </section>
     )
 }
 
